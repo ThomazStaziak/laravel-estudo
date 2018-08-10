@@ -34,31 +34,14 @@
         <input type="text" class="form-control" value="{{old('length')}}" name="length" id="duracao"/>
     </div>
     <div class="form-group col-6 m-auto">
-      <label>Data de estreia</label>
-        <select name="dia" class="form-control">
-          <option value="">Dia</option>
-            @for ($i=1; $i < 32; $i++)
-              <option value="2"><?php echo $i ?></option>
-            @endfor
-        </select>
-        <select name="mes" class="form-control">
-          <option value="">Mês</option>
-            @for ($i=0; $i < 13; $i++)
-              <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-            @endfor
-          </select>
-          <select name="ano" class="form-control">
-            <option value="">Ano</option>
-              @for ($i=2019; $i >= 1900; $i--)
-                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-              @endfor
-          </select>
-        </div>
-      </div>
-      <br>
-      <div class="form-group col-6 m-auto">
-        <input type="submit" value="Adicionar Filme" name="submit" class="btn btn-primary"/>
-      </div>
+        <label>Data de estreia</label>
+        <input type="date" class="form-control" name="release_date" value="{{ old('release_date') }}">
+    </div>
+    </div>
+    <br>
+    <div class="form-group col-6 m-auto">
+      <input type="submit" value="Adicionar Filme" name="submit" class="btn btn-primary"/>
+    </div>
     </form>
   </body>
 </html>

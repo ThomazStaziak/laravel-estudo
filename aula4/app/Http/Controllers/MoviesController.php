@@ -12,16 +12,16 @@ class MoviesController extends Controller
     {
       $this->validate($request, [
         'title' => 'required',
-        'rating' => 'required',
-        'awards' => 'required',
-        'length' => 'required'
+        'rating' => 'required|numeric',
+        'awards' => 'required|numeric|max:2|min:1',
+        'length' => 'required|numeric'
       ]);
       $movie = Movie::create([
         'title' => $request->input('title'),
         'rating' => $request->input('rating'),
         'awards' => $request->input('awards'),
         'length' => $request->input('length'),
-        'release_date' => '2000-01-01'
+        'release_date' => $request->input('release_date')
       ]);
 
       $salvar = $movie->save();
