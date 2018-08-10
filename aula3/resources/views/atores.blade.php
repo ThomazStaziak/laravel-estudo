@@ -68,7 +68,9 @@
       <div class="content">
         @if (Request::is('todosOsAtores'))
           @foreach ($atores as $key => $value)
-            <a href="atores/{{$value['id']}}"> {{ $value["first_name"] . " " . $value["last_name"]}} </a>
+            <a href="atores/{{$value['id']}}"> {{ $value["first_name"] . " " . $value["last_name"] }} </a>
+            <br>
+            <span>{{$atores[$key]['title']}}</span>
             <br>
           @endforeach
         @elseif (Request::is('atores/procurar'))

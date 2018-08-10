@@ -15,7 +15,7 @@ class ActorsController extends Controller
   }
 
   public function directory(){
-    $atores = Actor::all();
+    $atores = Actor::join('movies', 'favorite_movie_id', 'movies.id')->get();
     return view('atores')->with('atores', $atores);
   }
 
