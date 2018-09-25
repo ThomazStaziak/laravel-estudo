@@ -15,15 +15,15 @@ class FormController extends Controller
       }
 
       // salvando
-      $arquivo->storePublicly("uploads");
-
       $nomePasta = 'uploads';
+
+      $arquivo->storePublicly($nomePasta);
 
       $caminho = public_path()."\\storage\\$nomePasta";
 
       $nomeArquivo = $arquivo->getClientOriginalName();
 
-      // movendo
+     // movendo
       $arquivo->move($caminho, $nomeArquivo);
 
       return view('imagem')->with('caminho', $caminho)->with('nomeArquivo', $nomeArquivo)->with('nomePasta', $nomePasta);
