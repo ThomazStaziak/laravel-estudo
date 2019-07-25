@@ -37,4 +37,5 @@ Route::get('/filmesMaiorQue90OuNotaMaiorQue5', 'MoviesController@filmesMaiorQue9
 Route::get('/form', function(){
   return view('form');
 });
+Route::get('/photos', 'FormController@index');
 Route::post('/salvar', 'FormController@storage');

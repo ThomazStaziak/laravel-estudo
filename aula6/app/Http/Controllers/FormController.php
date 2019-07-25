@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Photo;
 
 class FormController extends Controller
 {
@@ -17,15 +18,30 @@ class FormController extends Controller
       // salvando
       $nomePasta = 'uploads';
 
-      $arquivo->storePublicly($nomePasta);
+      $arquivostorePublicly($nomePasta);
 
-      $caminho = public_path()."\\storage\\$nomePasta";
+      $caminhoAbsoluto = public_path()."/storage/$nomePasta";
 
       $nomeArquivo = $arquivo->getClientOriginalName();
 
-     // movendo
-      $arquivo->move($caminho, $nomeArquivo);
+      $caminhoRelativo = "storage/$nomePasta/$nomeArquivo";
 
-      return view('imagem')->with('caminho', $caminho)->with('nomeArquivo', $nomeArquivo)->with('nomePasta', $nomePasta);
+     // movendo
+      $arquivo->move($caminhoAbsoluto, $nomeArquivo);
+
+      Photo::create([
+          'image' => $caminhoRelativo
+      ]);
+
+      return redirect('/photos');
+
+    //   return view('imagem')->with('caminho', $caminhoAbsoluto)->with('nomeArquivo', $nomeArquivo)->with('nomePasta', $nomePasta);
+    }
+
+    public function index()
+    {
+        $photos = Photo::all();
+
+        return view('photos')->with('photos', $photos);
     }
 }
