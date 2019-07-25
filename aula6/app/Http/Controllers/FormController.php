@@ -18,7 +18,7 @@ class FormController extends Controller
       // salvando
       $nomePasta = 'uploads';
 
-      $arquivostorePublicly($nomePasta);
+      $arquivo->storePublicly($nomePasta);
 
       $caminhoAbsoluto = public_path()."/storage/$nomePasta";
 
